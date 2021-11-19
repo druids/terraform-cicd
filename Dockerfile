@@ -2,7 +2,7 @@ FROM alpine:latest
 
 ARG TERRAFORM_VERSION=1.0.11
 
-ARG AWS_CLI_VERSION=1.18.192
+ARG AWS_CLI_VERSION=1.22.9
 
 RUN apk add --no-cache --virtual=.run-deps bash git openssh-client wget python3 py-crcmod bash libc6-compat curl jq \
 	&& apk add --no-cache --virtual=.build-deps ca-certificates unzip curl py-pip \
