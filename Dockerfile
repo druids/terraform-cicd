@@ -1,8 +1,6 @@
 FROM alpine:latest
 
-ARG TERRAFORM_VERSION=1.1.3
-
-ARG AWS_CLI_VERSION=1.22.9
+ARG TERRAFORM_VERSION=1.4.6
 
 RUN apk add --no-cache --virtual=.run-deps bash git openssh-client wget python3 py-crcmod bash libc6-compat curl jq \
 	&& apk add --no-cache --virtual=.build-deps ca-certificates unzip curl py-pip \
@@ -13,6 +11,6 @@ RUN apk add --no-cache --virtual=.run-deps bash git openssh-client wget python3 
 	&& mkdir -p ~/.ssh \
 	&& echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config \
 	&& echo "### INSTALL AWS CLI ###" \
-	&& pip install awscli==${AWS_CLI_VERSION} \
+	&& pip install awscli \
 	&& echo "### Cleanup ###" \
 	&& apk del .build-deps
